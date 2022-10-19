@@ -52,19 +52,19 @@ int print_string(va_list ap, char buffer[],
 		{
 			str = "      ";
 		}
-
-		while (str[len] != '\0')
+	}
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	
+	if (precision >= 0 && precision < len)
+	{
+		len = precision;
+	}
+	
+	if (width > length)
+	{
+		if (flags & F_MINUS)
 		{
-			len++;
-		}
-
-		if (precision >= 0 && precision < len)
-		{
-			len = precision;
-		}
-
-		if (width > length)
-		{
-			if (flags & F_MINUS)
-			{
-			
+	
