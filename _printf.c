@@ -1,6 +1,6 @@
 #include "main.h"
 
-void print_buff(char buffer[], *buff_ind);
+void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - is the printf func.
@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int i, printed = 0, printed_c = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list ap;
-	char buffer[BUFFER_SIZE];
+	char buffer[BUFF_SIZE];
 
 	/* checking if there are no number of args */
 	if (format == NULL)
@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	/* note; format are the last known arguments */
 
 	/* making sure we do not include the null parameter */
-	for (i = 0; format && format[i] != '\0')
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		/* if the char at ith position is not a specifier */
 		/* (are introduced with %) */
@@ -34,16 +34,16 @@ int _printf(const char *format, ...)
 		{
 			/* copying the char/arg to the buffer memory */
 			buffer[buff_ind++] = format[i];
-			if (buff_ind == BUFFER_SIZE)
+			if (buff_ind == BUFF_SIZE)
 			{
 				/* PRINTING CONTENTS IN BUFFER */
-				print_buf(buffer, &buff_ind);
+				print_buffer(buffer, &buff_ind);
 			}
 			printed_c++;
 		}
 		else
 		{
-			print_buf(buffer, &buff_ind);
+			print_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &i);
 			width = get_width(format, &i, ap);
 			precision = get_precision(format, &i, ap);
@@ -59,7 +59,7 @@ int _printf(const char *format, ...)
 			printed_c += printed;
 		}
 	}
-	print_buf(buffer, &buff_ind);
+	print_buffer(buffer, &buff_ind);
 
 	va_end(ap);
 
