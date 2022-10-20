@@ -12,7 +12,7 @@
  * Return: no of chars printed
  */
 
-int print_c(va_list ap, char buffer[],
+int print_char(va_list ap, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char c = va_arg(ap, int);
@@ -94,7 +94,7 @@ int print_string(va_list ap, char buffer[],
  * Return: no. of chars printed
  */
 
-int print_percents(va_list ap, char buffer[],
+int print_percent(va_list ap, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	UNUSED(ap);
