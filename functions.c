@@ -17,7 +17,7 @@ int print_c(va_list ap, char buffer[],
 {
 	char c = va_arg(ap, int);
 
-	return (handle_write_c(c, buffer, flags, width, precision, size));
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
 
 /**
@@ -40,7 +40,7 @@ int print_string(va_list ap, char buffer[],
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(precision);
-	UNSUSED(size);
+	UNUSED(size);
 	UNUSED(width);
 
 	if (str == NULL)
@@ -174,7 +174,7 @@ int print_int(va_list ap, char buffer[],
 {
 	int i = BUFF_SIZE - 2;
 	int is_negative = 0;
-	long int n = va_arg(types, long int);
+	long int n = va_arg(ap, long int);
 	unsigned long int num;
 
 	n = convert_size_number(n, size);
