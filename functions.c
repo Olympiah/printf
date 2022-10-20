@@ -67,4 +67,26 @@ int print_string(va_list ap, char buffer[],
 	{
 		if (flags & F_MINUS)
 		{
-	
+			write(1, &str[0], len);
+			for (i = width - len; i > 0; i--)
+			{
+				write(1, " ", 1);
+			}
+			
+			return (width);
+		}
+		else
+		{
+			for (i = width - len; i > 0; i-- )
+			{
+				write(1, " ", 1);
+			}
+			write(1, &str[0], len);
+			return (width);
+		}
+	}
+	return (write(1, str, len));
+}
+
+
+			
