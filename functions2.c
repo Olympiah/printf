@@ -11,14 +11,14 @@
  * Return: Number of chars printed
  */
 
-int print_pointer(va_list types, char buffer[],
+int print_pointer(va_list ap, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char extra_c = 0, padd = ' ';
 	int ind = BUFF_SIZE - 2, length = 2, padd_start = 1;
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
-	void *addrs = va_arg(types, void *);
+	void *addrs = va_arg(ap, void *);
 
 	UNUSED(width);
 	UNUSED(size);
@@ -69,7 +69,7 @@ int print_non_printable(va_list ap, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
-	char *str = va_arg(types, char *);
+	char *str = va_arg(ap, char *);
 
 	UNUSED(flags);
 	UNUSED(width);
@@ -115,7 +115,7 @@ int print_rot13string(va_list ap, char buffer[],
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	str = va_arg(types, char *);
+	str = va_arg(ap, char *);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
